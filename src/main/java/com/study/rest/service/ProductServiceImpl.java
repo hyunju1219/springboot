@@ -1,9 +1,6 @@
 package com.study.rest.service;
 
-import com.study.rest.dto.ColorDto;
-import com.study.rest.dto.CommonResponseDto;
-import com.study.rest.dto.ProductDto;
-import com.study.rest.dto.SizeDto;
+import com.study.rest.dto.*;
 import com.study.rest.entity.Color;
 import com.study.rest.entity.Size;
 import com.study.rest.repository.ColorMapper;
@@ -38,5 +35,15 @@ public class ProductServiceImpl implements ProductService{
     public CommonResponseDto registerProduct(ProductDto.Register register) {
         //dto를 entity로 변환해서 mapper를 통해 db에 저장 후 반환된값을 확인하고 결과리턴
         return CommonResponseDto.ofDefault(productMapper.save(register.toEntity()));
+    }
+
+    @Override
+    public CommonResponseDto registerSize(ReqRegisterSizeDto reqRegisterSizeDto) {
+        return CommonResponseDto.ofDefault(sizeMapper.save(reqRegisterSizeDto.toEntity()));
+    }
+
+    @Override
+    public CommonResponseDto registerColor(ReqRegisterColorDto reqRegisterColorDto) {
+        return CommonResponseDto.ofDefault(colorMapper.save(reqRegisterColorDto.toEntity()));
     }
 }

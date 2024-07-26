@@ -7,5 +7,6 @@ import java.util.List;
 
 @Mapper
 public interface SizeMapper {
+    int save(Size size);
     List<Size> findAll();
 }

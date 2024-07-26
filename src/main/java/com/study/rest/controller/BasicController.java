@@ -75,7 +75,13 @@ public class BasicController {
     @PostMapping("/api/v1/size")
     public ResponseEntity<?> registerSizeApi(@RequestBody ReqRegisterSizeDto reqRegisterSizeDto) {
         log.info("{}", reqRegisterSizeDto);
-        return ResponseEntity.ok().body(null);
+        return ResponseEntity.ok().body(productService.registerSize(reqRegisterSizeDto));
+    }
+
+    @CrossOrigin
+    @PostMapping("/api/v1/color")
+    public ResponseEntity<?> registerColorApi(@RequestBody ReqRegisterColorDto reqRegisterColorDto) {
+        return ResponseEntity.ok().body(productService.registerColor(reqRegisterColorDto));
     }
 
 }
